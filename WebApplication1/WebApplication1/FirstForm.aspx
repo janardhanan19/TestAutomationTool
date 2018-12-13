@@ -130,7 +130,7 @@
                 <asp:ListItem>22</asp:ListItem>
                 <asp:ListItem>23</asp:ListItem>
                 <asp:ListItem>24</asp:ListItem>
-            </asp:DropDownList>&nbsp;<strong>hoursong>hours</strong>
+            </asp:DropDownList>&nbsp;<strong>hours</strong>
 
             <asp:DropDownList ID="MinutesDropDownBox" runat="server" Height="21px" Width="143px" style="margin-left: 78px" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged">
                 <asp:ListItem>1</asp:ListItem>
@@ -199,7 +199,8 @@
         
 
             <p>
-       &nbsp;</p>
+                <asp:Label ID="buildResult" runat="server" EnableTheming="True" Text="result"></asp:Label>
+        </p>
 
         <p style="margin-left: 520px">
             <asp:Button ID="buildButton" runat="server" BorderColor="#003300" BorderStyle="Solid" Font-Bold="True" Font-Names="Calibri" OnClick="Button2_Click" Text="BUILD" Width="83px" BackColor="#000066" ForeColor="White" style="margin-bottom: 30px" />

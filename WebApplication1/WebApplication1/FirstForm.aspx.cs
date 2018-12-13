@@ -57,15 +57,15 @@ namespace WebApplication1
 
                 string mvnCommand=null;
 
-                    if (!(jiraTextBox.Text.Equals(null) && buildTextBox.Text.Equals(null)))
+                    if (!(jiraTextBox.Text.Equals("") && buildTextBox.Text.Equals("")))
                     {
-                        mvnCommand ="mvn test -P " + gatewayDropDown.SelectedItem.Text + 
+                        mvnCommand ="mvn test -P " + gatewayDropDown.SelectedItem.Text.ToLower() + 
                             " & ReportResultsToJira -version:" + "\"" + jiraTextBox.Text.ToLower() + "\"" + " -build:" + buildTextBox.Text;
 
                     }
                     else
                     {
-                        mvnCommand = "mvn test -P " + gatewayDropDown.SelectedItem.Text;
+                        mvnCommand = "mvn test -P " + gatewayDropDown.SelectedItem.Text.ToLower();
                     }
 
                     // Create the file.
@@ -78,8 +78,7 @@ namespace WebApplication1
                                +"git clone " + "http://" + userNameTextBox.Text + "@stash.agilysys.local/scm/pay/testautomationcardservice.git" + "\n"
                                + "cd testautomationcardservice" + "\n"
                                + "cd pay-giftcard "+"\n"
-                               + "mvn -T 2 compile install -DskipTests=true " + "\n"
-                              +mvnCommand
+                               + "mvn -T 2 compile install -DskipTests=true &" + mvnCommand
                                );
                        fs.Write(info, 0, info.Length);
                         // Open the stream and read it back.
@@ -106,6 +105,15 @@ namespace WebApplication1
             process.WaitForExit();
 
             int ExitCode = process.ExitCode;
+            if (ExitCode == 0)
+            {
+                buildResult.Text = "Build is successfully passed";
+            }
+            else
+                {
+                    buildResult.Text = "Build failed";
+                }
+            
             process.Close();
             
         }
@@ -132,7 +140,7 @@ namespace WebApplication1
 
         protected void CheckIfFolderExisits()
         {
-            string path1 = localPathTextBox.Text + "\\" + folderTextBox.Text + "\\" + "giftcard";
+            string path1 = localPathTextBox.Text + "\\" + folderTextBox.Text + "\\" + "testautomationcardservice";
             if (!Directory.Exists(path1))
             {
                 TestExecution();
@@ -244,6 +252,11 @@ namespace WebApplication1
         }
 
         protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
         {
 
         }

@@ -235,3 +235,4 @@ C:\Users\janar\Desktop\WebApplication1\WebApplication1\obj\Debug\WebApplication1
 C:\Users\janar\Desktop\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
 C:\WebApplication1\WebApplication1\bin\WebDriver.dll
 C:\WebApplication1\WebApplication1\bin\WebDriver.xml
+C:\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojAssemblyReference.cache
